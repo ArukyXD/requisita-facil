@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">Operação</p>
+        <h1>Requisições</h1>
+    </div>
+    <a class="button" href="{{ url_for('requisitions.create') }}">Nova requisição</a>
+</div>
+
+<section class="panel">
+    <table>
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Data</th>
+                <th>Solicitante</th>
+                <th>Setor</th>
+                <th>Linha</th>
+                <th>Meta</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for r in requisitions %}
+            <tr>
+                <td>#{{ r.id }}</td>
+                <td>{{ r.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+                <td>{{ r.requester.name }}</td>
+                <td>{{ r.sector }}</td>
+                <td>{{ r.line }}</td>
+                <td>{{ r.production_goal }}</td>
+                <td><span class="status">{{ r.status }}</span></td>
+                <td><a href="{{ url_for('requisitions.show', requisition_id=r.id) }}">Abrir</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

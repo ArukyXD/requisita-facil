@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="document-actions no-print">
+    <a class="button secondary" href="{{ url_for('requisitions.index') }}">Voltar</a>
+    <button onclick="window.print()">Imprimir / salvar PDF</button>
+</div>
+
+<section class="document">
+    <header>
+        <div>
+            <p class="eyebrow">Documento de requisição</p>
+            <h1>Requisição #{{ requisition.id }}</h1>
+        </div>
+        <span class="status">{{ requisition.status }}</span>
+    </header>
+
+    <div class="doc-grid">
+        <p><strong>Data:</strong> {{ requisition.created_at.strftime("%d/%m/%Y %H:%M") }}</p>
+        <p><strong>Solicitante:</strong> {{ requisition.requester.name }}</p>
+        <p><strong>Setor:</strong> {{ requisition.sector }}</p>
+        <p><strong>Linha:</strong> {{ requisition.line }}</p>
+        <p><strong>Meta:</strong> {{ requisition.production_goal }}</p>
+    </div>
+
+    {% if requisition.notes %}
+    <p><strong>Observação:</strong> {{ requisition.notes }}</p>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Material</th>
+                <th>Disponível</th>
+                <th>Necessário</th>
+                <th>Qtd. requisitada</th>
+                <th>Un.</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in requisition.items %}
+            <tr>
+                <td>{{ item.material.code }}</td>
+                <td>{{ item.material.description }}</td>
+                <td>{{ "%.2f"|format(item.available_qty) }}</td>
+                <td>{{ "%.2f"|format(item.needed_qty) }}</td>
+                <td><strong>{{ "%.2f"|format(item.request_qty) }}</strong></td>
+                <td>{{ item.material.unit }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not requisition.items %}
+    <p>Nenhum material precisa ser requisitado para esta meta.</p>
+    {% endif %}
+
+    {% if current_user.can_update_status %}
+    <form method="post" action="{{ url_for('requisitions.update_status', requisition_id=requisition.id) }}" class="status-form no-print">
+        <label>Alterar status</label>
+        <select name="status">
+            {% for s in ["Pendente", "Aprovada", "Separada", "Entregue", "Cancelada"] %}
+                <option value="{{ s }}" {% if requisition.status == s %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Atualizar</button>
+    </form>
+    {% endif %}
+
+    <footer class="signatures">
+        <div>Solicitante</div>
+        <div>Supervisor</div>
+        <div>Almoxarifado</div>
+    </footer>
+</section>
+{% endblock %}

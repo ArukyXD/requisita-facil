@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Requisita Fácil{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+{% if current_user.is_authenticated %}
+<header class="topbar">
+    <a class="brand" href="{{ url_for('main.dashboard') }}">Requisita Fácil</a>
+    <nav>
+        <a href="{{ url_for('main.dashboard') }}">Início</a>
+        <a href="{{ url_for('materials.index') }}">Materiais</a>
+        <a href="{{ url_for('requisitions.index') }}">Requisições</a>
+        <a class="primary-link" href="{{ url_for('requisitions.create') }}">Nova requisição</a>
+    </nav>
+    <div class="user-chip">
+        {{ current_user.name }} · {{ current_user.role }}
+        <a href="{{ url_for('auth.logout') }}">Sair</a>
+    </div>
+</header>
+{% endif %}
+
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Login | Requisita Fácil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body class="auth-page">
+    <form method="post" class="auth-card">
+        <div class="logo-mark">RF</div>
+        <h1>Requisita Fácil</h1>
+        <p>Controle simples e seguro de requisições de materiais.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <label>Usuário</label>
+        <input name="username" required autocomplete="username">
+
+        <label>Senha</label>
+        <input name="password" type="password" required autocomplete="current-password">
+
+        <button type="submit">Entrar</button>
+
+        <small>admin/admin123 · operador/operador123 · almox/almox123</small>
+    </form>
+</body>
+</html>

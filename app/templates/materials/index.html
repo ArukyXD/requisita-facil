@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">Cadastro</p>
+        <h1>Materiais</h1>
+    </div>
+    {% if current_user.can_manage_materials %}
+    <a class="button" href="{{ url_for('materials.create') }}">Novo material</a>
+    {% endif %}
+</div>
+
+<section class="panel">
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Unidade</th>
+                <th>Setor</th>
+                <th>Consumo por meta</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for m in materials %}
+            <tr>
+                <td>{{ m.code }}</td>
+                <td>{{ m.description }}</td>
+                <td>{{ m.unit }}</td>
+                <td>{{ m.sector }}</td>
+                <td>{{ m.consumption_per_unit }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

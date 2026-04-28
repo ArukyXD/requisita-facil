@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Painel operacional</p>
+        <h1>Requisições de materiais sem complicação.</h1>
+        <p>Crie, acompanhe e entregue requisições com rastreabilidade.</p>
+    </div>
+    <a class="button" href="{{ url_for('requisitions.create') }}">Criar requisição</a>
+</section>
+
+<section class="metrics">
+    <article>
+        <span>{{ total }}</span>
+        <p>Total</p>
+    </article>
+    <article>
+        <span>{{ pending }}</span>
+        <p>Pendentes</p>
+    </article>
+    <article>
+        <span>{{ delivered }}</span>
+        <p>Entregues</p>
+    </article>
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <h2>Últimas requisições</h2>
+        <a href="{{ url_for('requisitions.index') }}">Ver todas</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Data</th>
+                <th>Solicitante</th>
+                <th>Linha</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for r in recent %}
+            <tr>
+                <td>#{{ r.id }}</td>
+                <td>{{ r.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+                <td>{{ r.requester.name }}</td>
+                <td>{{ r.line }}</td>
+                <td><span class="status">{{ r.status }}</span></td>
+                <td><a href="{{ url_for('requisitions.show', requisition_id=r.id) }}">Abrir</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
