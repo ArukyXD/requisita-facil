@@ -3,6 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Login | Everest Refrigeração</title>
+
+    <style>
+        html { background: #f6f7fb; }
+        body { opacity: 0; }
+        html.app-loaded body { opacity: 1; transition: opacity .08s ease-in; }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            document.documentElement.classList.add("app-loaded");
+        });
+    </script>
+    <noscript><style>body { opacity: 1; }</style></noscript>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 <body class="auth-page">

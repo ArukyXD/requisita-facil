@@ -81,3 +81,7 @@ PORT=10000
 7. Faça o deploy.
 
 O Dockerfile já roda a criação inicial do banco e inicia o app com Gunicorn.
+
+## Ajuste visual
+
+Inclui correção anti-FOUC para evitar que páginas apareçam sem CSS durante a navegação.
