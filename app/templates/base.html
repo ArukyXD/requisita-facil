@@ -2,14 +2,20 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}Requisita Fácil{% endblock %}</title>
+    <title>{% block title %}Everest Refrigeração | Requisita Fácil{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 <body>
 {% if current_user.is_authenticated %}
 <header class="topbar">
-    <a class="brand" href="{{ url_for('main.dashboard') }}">Requisita Fácil</a>
+    <a class="brand" href="{{ url_for('main.dashboard') }}">
+        <span class="brand-mark">ER</span>
+        <span>
+            <strong>Everest Refrigeração</strong>
+            <small>Requisita Fácil</small>
+        </span>
+    </a>
     <nav>
         <a href="{{ url_for('main.dashboard') }}">Início</a>
         <a href="{{ url_for('materials.index') }}">Materiais</a>
