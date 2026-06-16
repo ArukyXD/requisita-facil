@@ -13,22 +13,27 @@
             document.documentElement.classList.add("app-loaded");
         });
 
+        function updateThemeButton() {
+            const btn = document.querySelector(".theme-toggle");
+            const current = document.documentElement.getAttribute("data-theme");
+
+            if (btn) {
+                btn.textContent = current === "dark"
+                    ? "☀️ Modo claro"
+                    : "🌙 Modo escuro";
+            }
+        }
+
         function toggleTheme() {
             const current = document.documentElement.getAttribute("data-theme");
             const next = current === "dark" ? "light" : "dark";
 
             document.documentElement.setAttribute("data-theme", next);
             localStorage.setItem("requisita-theme", next);
-
-            const btn = document.querySelector(".theme-toggle");
-            if (btn) btn.textContent = next === "dark" ? "Modo claro" : "Modo escuro";
+            updateThemeButton();
         }
 
-        window.addEventListener("DOMContentLoaded", function () {
-            const btn = document.querySelector(".theme-toggle");
-            const current = document.documentElement.getAttribute("data-theme");
-            if (btn) btn.textContent = current === "dark" ? "Modo claro" : "Modo escuro";
-        });
+        window.addEventListener("DOMContentLoaded", updateThemeButton);
     </script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
@@ -56,7 +61,7 @@
 
     <div class="topbar-actions">
         <button type="button" class="theme-toggle" onclick="toggleTheme()">
-            Modo claro
+            ☀️ Modo claro
         </button>
 
         <div class="user-chip">
