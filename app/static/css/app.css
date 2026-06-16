@@ -794,3 +794,136 @@ html[data-theme="dark"] select:focus {
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(56,189,248,.16) !important;
 }
+
+/* ================================
+   REQUISITA FÁCIL — MOBILE PREMIUM
+   ================================ */
+
+@media (max-width: 768px) {
+    .topbar {
+        min-height: auto !important;
+        padding: 14px 18px !important;
+        gap: 14px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .brand-logo {
+        width: 96px !important;
+    }
+
+    .main-nav,
+    .topbar nav {
+        width: 100% !important;
+        order: 3 !important;
+        display: flex !important;
+        gap: 10px !important;
+        overflow-x: auto !important;
+        padding-bottom: 4px !important;
+    }
+
+    .main-nav a,
+    .topbar nav a {
+        white-space: nowrap !important;
+        font-size: 13px !important;
+    }
+
+    .primary-link {
+        padding: 9px 14px !important;
+    }
+
+    .topbar-actions {
+        margin-left: auto !important;
+        gap: 10px !important;
+    }
+
+    .theme-toggle {
+        padding: 8px 11px !important;
+        font-size: 12px !important;
+    }
+
+    .user-chip {
+        font-size: 12px !important;
+        gap: 6px !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 18px 14px 40px !important;
+    }
+
+    .hero {
+        padding: 24px 22px !important;
+        border-radius: 22px !important;
+    }
+
+    .hero h1 {
+        font-size: 28px !important;
+        line-height: 1.15 !important;
+    }
+
+    .hero p {
+        font-size: 14px !important;
+    }
+
+    .hero .button,
+    .hero .btn,
+    .hero a.button {
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 16px !important;
+    }
+
+    .metrics {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .metrics article {
+        padding: 22px !important;
+        border-radius: 20px !important;
+    }
+
+    .panel {
+        padding: 22px 16px !important;
+        border-radius: 22px !important;
+        overflow-x: auto !important;
+    }
+
+    .panel-heading {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+
+    table {
+        min-width: 720px !important;
+    }
+
+    form,
+    .form-card,
+    .form-panel {
+        padding: 20px 16px !important;
+        border-radius: 22px !important;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100% !important;
+        font-size: 16px !important;
+    }
+
+    .form-grid,
+    .grid,
+    .fields-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    button,
+    .button,
+    .btn {
+        min-height: 44px !important;
+    }
+}
