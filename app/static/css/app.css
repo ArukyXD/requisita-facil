@@ -596,3 +596,25 @@ small,
         margin-left: auto;
     }
 }
+
+/* Correção cards brancos no modo escuro */
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .metric-card,
+:root[data-theme="dark"] .dashboard-card {
+    background: #15191a !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    color: #f3f4f6 !important;
+}
+
+:root[data-theme="dark"] .stat-card *,
+:root[data-theme="dark"] .metric-card *,
+:root[data-theme="dark"] .dashboard-card * {
+    color: inherit !important;
+}
+
+:root[data-theme="dark"] .stat-card span,
+:root[data-theme="dark"] .stat-card small,
+:root[data-theme="dark"] .metric-card span,
+:root[data-theme="dark"] .metric-card small {
+    color: #a8b0b8 !important;
+}
