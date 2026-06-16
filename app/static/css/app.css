@@ -364,11 +364,9 @@ input, textarea, select {
 }
 
 .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 220px;
+    height: auto;
     object-fit: contain;
-    border-radius: 12px;
-    background: #0ea5e9;
-    padding: 6px;
+    display: block;
     flex-shrink: 0;
 }
