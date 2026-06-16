@@ -1,30 +1,35 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Everest Refrigeração | Requisita Fácil{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        html { background: #f6f7fb; }
-        body { opacity: 0; }
-        html.app-loaded body {
-            opacity: 1;
-            transition: opacity .08s ease-in;
-        }
-    </style>
-
     <script>
+        const savedTheme = localStorage.getItem("requisita-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+
         window.addEventListener("load", function () {
             document.documentElement.classList.add("app-loaded");
         });
-    </script>
 
-    <noscript>
-        <style>
-            body { opacity: 1; }
-        </style>
-    </noscript>
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute("data-theme");
+            const next = current === "dark" ? "light" : "dark";
+
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("requisita-theme", next);
+
+            const btn = document.querySelector(".theme-toggle");
+            if (btn) btn.textContent = next === "dark" ? "Modo claro" : "Modo escuro";
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const btn = document.querySelector(".theme-toggle");
+            const current = document.documentElement.getAttribute("data-theme");
+            if (btn) btn.textContent = current === "dark" ? "Modo claro" : "Modo escuro";
+        });
+    </script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
@@ -42,16 +47,22 @@
         >
     </a>
 
-    <nav>
+    <nav class="main-nav">
         <a href="{{ url_for('main.dashboard') }}">Início</a>
         <a href="{{ url_for('materials.index') }}">Materiais</a>
         <a href="{{ url_for('requisitions.index') }}">Requisições</a>
         <a class="primary-link" href="{{ url_for('requisitions.create') }}">Nova requisição</a>
     </nav>
 
-    <div class="user-chip">
-        {{ current_user.name }} · {{ current_user.role }}
-        <a href="{{ url_for('auth.logout') }}">Sair</a>
+    <div class="topbar-actions">
+        <button type="button" class="theme-toggle" onclick="toggleTheme()">
+            Modo claro
+        </button>
+
+        <div class="user-chip">
+            {{ current_user.name }} · {{ current_user.role }}
+            <a href="{{ url_for('auth.logout') }}">Sair</a>
+        </div>
     </div>
 
 </header>
