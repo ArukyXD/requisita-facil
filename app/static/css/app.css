@@ -746,3 +746,27 @@ html[data-theme="dark"] .status-badge {
     color: #7dd3fc !important;
     border: 1px solid rgba(56,189,248,.24) !important;
 }
+
+/* Logo visível no modo claro */
+html[data-theme="light"] .topbar {
+    background: rgba(8, 15, 32, 0.96) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.10) !important;
+}
+
+html[data-theme="light"] .main-nav a,
+html[data-theme="light"] .topbar nav a,
+html[data-theme="light"] .user-chip,
+html[data-theme="light"] .user-chip a {
+    color: #f8fafc !important;
+}
+
+html[data-theme="light"] .theme-toggle {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(15, 23, 42, 0.15) !important;
+}
+
+html[data-theme="light"] .brand-logo {
+    opacity: 1 !important;
+    filter: none !important;
+}
