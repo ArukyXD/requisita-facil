@@ -618,3 +618,76 @@ small,
 :root[data-theme="dark"] .metric-card small {
     color: #a8b0b8 !important;
 }
+
+/* ==================================
+   CORREÇÃO DEFINITIVA MODO ESCURO
+   ================================== */
+
+/* Cards de estatísticas */
+html[data-theme="dark"] .stats-grid > *,
+html[data-theme="dark"] .stats-grid article,
+html[data-theme="dark"] .stats-grid div {
+    background: #202427 !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+
+    color: #f5f5f5 !important;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+/* Hero continua azul */
+html[data-theme="dark"] .hero {
+    background: linear-gradient(
+        135deg,
+        #082347,
+        #0b5f91
+    ) !important;
+}
+
+/* Painel das requisições */
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .dashboard-panel {
+    background: #171b1c !important;
+
+    border: 1px solid rgba(255,255,255,.08) !important;
+
+    color: #f5f5f5 !important;
+}
+
+/* Tabela */
+html[data-theme="dark"] table {
+    background: transparent !important;
+}
+
+html[data-theme="dark"] thead,
+html[data-theme="dark"] tbody,
+html[data-theme="dark"] tr {
+    background: transparent !important;
+}
+
+html[data-theme="dark"] th {
+    color: #9ca3af !important;
+}
+
+html[data-theme="dark"] td {
+    color: #f5f5f5 !important;
+}
+
+html[data-theme="dark"] tr:not(:last-child) td,
+html[data-theme="dark"] tr:not(:last-child) th {
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Badge pendente */
+html[data-theme="dark"] .badge,
+html[data-theme="dark"] .status,
+html[data-theme="dark"] .status-badge {
+    background: rgba(56,189,248,.15) !important;
+
+    color: #7dd3fc !important;
+
+    border: 1px solid rgba(56,189,248,.25) !important;
+}
