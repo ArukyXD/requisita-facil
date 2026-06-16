@@ -362,3 +362,13 @@ input, textarea, select {
     font-size: 14px;
     font-weight: 900;
 }
+
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #0ea5e9;
+    padding: 6px;
+    flex-shrink: 0;
+}
