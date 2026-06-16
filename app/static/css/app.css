@@ -691,3 +691,58 @@ html[data-theme="dark"] .status-badge {
 
     border: 1px solid rgba(56,189,248,.25) !important;
 }
+
+/* Correção real dos cards do dashboard */
+html[data-theme="dark"] .metrics article {
+    background: #202427 !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    color: #f3f4f6 !important;
+    box-shadow: 0 14px 35px rgba(0,0,0,.24) !important;
+}
+
+html[data-theme="dark"] .metrics article p {
+    color: #9ca3af !important;
+}
+
+html[data-theme="dark"] .metrics article span {
+    color: #38bdf8 !important;
+}
+
+/* Correção real do painel/tabela */
+html[data-theme="dark"] .panel {
+    background: #171b1c !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    color: #f3f4f6 !important;
+}
+
+html[data-theme="dark"] .panel table,
+html[data-theme="dark"] .panel thead,
+html[data-theme="dark"] .panel tbody,
+html[data-theme="dark"] .panel tr {
+    background: transparent !important;
+}
+
+html[data-theme="dark"] .panel th {
+    color: #a8b0b8 !important;
+}
+
+html[data-theme="dark"] .panel td {
+    color: #f3f4f6 !important;
+}
+
+html[data-theme="dark"] .panel tr {
+    border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
+
+html[data-theme="dark"] .panel a {
+    color: #38bdf8 !important;
+}
+
+/* Badge pendente menos branco */
+html[data-theme="dark"] .badge,
+html[data-theme="dark"] .status,
+html[data-theme="dark"] .status-badge {
+    background: rgba(56,189,248,.16) !important;
+    color: #7dd3fc !important;
+    border: 1px solid rgba(56,189,248,.24) !important;
+}
